@@ -3,11 +3,13 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
+import react from '@astrojs/react';
 
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://screwfast.uk",
   image: {
@@ -24,7 +26,9 @@ export default defineConfig({
   //   },
   // },
   prefetch: true,
-  integrations: [sitemap({
+  integrations: [
+    react(),
+    sitemap({
     i18n: {
       defaultLocale: "en", // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
       locales: {

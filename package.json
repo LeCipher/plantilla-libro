@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.1.0",
+    "@astrojs/react": "^4.2.1",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/starlight": "^0.32.2",
     "@tailwindcss/vite": "^4.0.12",
@@ -23,6 +24,8 @@
     "html-minifier-terser": "^7.2.0",
     "lenis": "^1.2.3",
     "preline": "^3.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "rimraf": "^6.0.1",
     "sharp": "^0.33.5",
     "sharp-ico": "^0.1.5",

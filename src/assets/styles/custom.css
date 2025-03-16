@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import "preline/variants.css";
+@plugin '@tailwindcss/forms';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Estilos personalizados para el botón */
+.btn {
+    @apply px-4 py-2 font-medium text-white rounded transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700;
+  }
