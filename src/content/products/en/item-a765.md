@@ -1,53 +1,53 @@
 ---
 title: "SF-AB A765"
-description: "Assorted Screw Set" 
+description: "Juego de Tornillos Variados"
 main:
   id: 2
   content: |
-    Introducing the SF-AB A765 Assorted Screw Set – the ultimate solution for your screw fastening needs. This comprehensive set includes a wide variety of screws meticulously curated to tackle various projects with ease and precision.
+    Presentamos el SF-AB A765 Juego de Tornillos Variados: la solución definitiva para tus necesidades de fijación. Este conjunto integral incluye una amplia variedad de tornillos meticulosamente seleccionados para abordar diversos proyectos con facilidad y precisión.
   imgCard: "@/images/product-image-2.avif"
   imgMain: "@/images/product-image-main-2.avif"
-  imgAlt: "Mockup boxes of assorted screw set"
+  imgAlt: "Cajas de muestra del juego de tornillos variados"
 tabs:
   - id: "tabs-with-card-item-1"
     dataTab: "#tabs-with-card-1"
-    title: "Description"
+    title: "Descripción"
   - id: "tabs-with-card-item-2"
     dataTab: "#tabs-with-card-2"
-    title: "Specifications"
+    title: "Especificaciones"
   - id: "tabs-with-card-item-3"
     dataTab: "#tabs-with-card-3"
-    title: "Blueprints"
+    title: "Planos"
 longDescription:
-  title: "Versatile Screw Fastening Solutions"
+  title: "Soluciones Versátiles para Fijación con Tornillos"
   subTitle: |
-    The SF-AB A765 Assorted Screw Set offers unmatched versatility and convenience, making it the perfect choice for DIY enthusiasts and professionals alike. With a comprehensive selection of screws, you'll always have the right fastener for the job.
-  btnTitle: "Contact sales to learn more"
+    El SF-AB A765 Juego de Tornillos Variados ofrece una versatilidad y conveniencia incomparables, convirtiéndose en la elección perfecta tanto para entusiastas del bricolaje como para profesionales. Con una selección completa de tornillos, siempre tendrás el sujetador adecuado para el trabajo.
+  btnTitle: "Contacta con ventas para más información"
   btnURL: "#"
 descriptionList:
-  - title: "Wide Variety"
-    subTitle: "Includes a diverse range of screw types and sizes to accommodate various applications and materials."
-  - title: "Ease of Use"
-    subTitle: "Each screw is designed for effortless installation, ensuring hassle-free fastening every time."
-  - title: "Convenience"
-    subTitle: "Eliminates the need for multiple trips to the hardware store, saving time and effort on your projects."
+  - title: "Amplia Variedad"
+    subTitle: "Incluye una gama diversa de tipos y tamaños de tornillos para adaptarse a diversas aplicaciones y materiales."
+  - title: "Facilidad de Uso"
+    subTitle: "Cada tornillo está diseñado para una instalación sin esfuerzo, garantizando una fijación sin complicaciones en todo momento."
+  - title: "Conveniencia"
+    subTitle: "Elimina la necesidad de múltiples viajes a la ferretería, ahorrando tiempo y esfuerzo en tus proyectos."
 specificationsLeft:
   - title: "Material"
-    subTitle: "Constructed from high-quality materials such as stainless steel, ensuring durability and corrosion resistance."
-  - title: "Assortment"
-    subTitle: "Contains a generous assortment of screws, including wood screws, machine screws, and sheet metal screws."
-  - title: "Quantity"
-    subTitle: "Each set includes a sufficient quantity of screws to handle a wide range of projects and tasks."
-  - title: "Sizes"
-    subTitle: "Available in various sizes to suit different project requirements, ensuring compatibility and versatility."
+    subTitle: "Fabricado con materiales de alta calidad como acero inoxidable, garantizando durabilidad y resistencia a la corrosión."
+  - title: "Surtido"
+    subTitle: "Contiene una generosa variedad de tornillos, incluyendo tornillos para madera, tornillos para máquinas y tornillos para chapa metálica."
+  - title: "Cantidad"
+    subTitle: "Cada conjunto incluye una cantidad suficiente de tornillos para manejar una amplia gama de proyectos y tareas."
+  - title: "Tamaños"
+    subTitle: "Disponible en varios tamaños para adaptarse a diferentes requisitos de proyectos, asegurando compatibilidad y versatilidad."
 tableData:
-  - feature: ["Specification", "Value"]
+  - feature: ["Especificación", "Valor"]
     description:
-      - ["Length (mm)", "Various"]
-      - ["Weight (g)", "N/A"]
-      - ["Material", "Stainless Steel"]
-      - ["Finish", "Assorted"]
-      - ["Package Contents", "Various screws in a set"]
+      - ["Longitud (mm)", "Variada"]
+      - ["Peso (g)", "N/A"]
+      - ["Material", "Acero Inoxidable"]
+      - ["Acabado", "Variado"]
+      - ["Contenido del Paquete", "Varios tornillos en un conjunto"]
 blueprints:
   first: "@/images/blueprint-1.avif"
   second: "@/images/blueprint-2.avif"

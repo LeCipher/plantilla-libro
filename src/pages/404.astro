@@ -1,81 +1,88 @@
 ---
-// Import section components
-import MainLayout from "@/layouts/MainLayout.astro";
-import Btn404 from "@components/ui/buttons/Btn404.astro";
-import { SITE } from "@data/constants";
+// Sección de importaciones de componentes
+import MainLayout from "@/layouts/MainLayout.astro"; // Importa el layout principal
+import Btn404 from "@components/ui/buttons/Btn404.astro"; // Importa el botón específico para la página 404
+import { SITE } from "@data/constants"; // Importa constantes del sitio
 
-// Define types for translations
-type TranslationKeys = "en" | "fr";
+// Definir tipos para las traducciones
+type TranslationKeys = "en" | "fr"; // Claves de idioma disponibles: inglés y francés
 type Translations = {
   [key in TranslationKeys]: {
-    pageTitle: string;
-    subTitle: string;
-    content: string;
-    btnTitle: string;
+    pageTitle: string;  // Título de la página
+    subTitle: string;   // Subtítulo que se muestra en la página
+    content: string;    // Contenido descriptivo de la página
+    btnTitle: string;   // Texto del botón
   };
 };
 
-// Define variables for page content
-const defaultLang: TranslationKeys = "en";
+// Variables para el contenido de la página
+const defaultLang: TranslationKeys = "en"; // Idioma predeterminado si no se encuentra uno en la URL
 const translations: Translations = {
   en: {
-    pageTitle: `Page Not Found | ${SITE.title}`,
-    subTitle: "Oops, this isn't the tool you were looking for!",
+    pageTitle: `Page Not Found | ${SITE.title}`, // Título en inglés
+    subTitle: "Oops, this isn't the tool you were looking for!", // Subtítulo en inglés
     content:
-      "Don't let this hiccup slow you down. Let's get you back to building your masterpiece.",
-    btnTitle: "Go Back",
+      "Don't let this hiccup slow you down. Let's get you back to building your masterpiece.", // Mensaje en inglés
+    btnTitle: "Go Back", // Texto del botón en inglés
   },
   fr: {
-    pageTitle: `Page Non Trouvée | ${SITE.title}`,
-    subTitle: "Oops, ce n'est pas l'outil que vous recherchiez!",
+    pageTitle: `Page Non Trouvée | ${SITE.title}`, // Título en francés
+    subTitle: "Oops, ce n'est pas l'outil que vous recherchiez!", // Subtítulo en francés
     content:
-      "Ne laissez pas ce contretemps vous ralentir. Revenons à la construction de votre chef-d'œuvre.",
-    btnTitle: "Retournez",
+      "Ne laissez pas ce contretemps vous ralentir. Revenons à la construction de votre chef-d'œuvre.", // Mensaje en francés
+    btnTitle: "Retournez", // Texto del botón en francés
   },
 };
 
-// Determine language from the URL
-const urlPath = Astro.url.pathname;
-const langCodeMatch = urlPath.match(/^\/(en|fr)\//);
+// Determinar el idioma según la URL
+const urlPath = Astro.url.pathname; // Obtiene la ruta actual de la URL
+const langCodeMatch = urlPath.match(/^\/(en|fr)\//); // Busca un código de idioma ("en" o "fr") al inicio de la ruta
 const lang: TranslationKeys = langCodeMatch
-  ? (langCodeMatch[1] as TranslationKeys)
-  : defaultLang;
+  ? (langCodeMatch[1] as TranslationKeys) // Si se encuentra, se utiliza ese idioma
+  : defaultLang; // Si no, se usa el idioma predeterminado
 
+// Extraer los valores de la traducción correspondiente al idioma seleccionado
 const { pageTitle, subTitle, content, btnTitle } = translations[lang];
 ---
 
+<!-- Estructura de la página utilizando el layout principal -->
 <MainLayout title={pageTitle}>
   <section class="grid h-svh place-content-center">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto max-w-(--breakpoint-sm) text-center">
+        <!-- Mostrar el código de error 404 con estilos destacados -->
         <h1
           class="text-dark mb-4 text-7xl font-extrabold text-yellow-500 dark:text-yellow-400 lg:text-9xl"
         >
           404
         </h1>
+        <!-- Mostrar el subtítulo de la página -->
         <p
           id="subtitle"
           class="mb-4 text-balance text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 md:text-4xl"
         >
           {subTitle}
         </p>
+        <!-- Mostrar el contenido descriptivo -->
         <p
           id="content"
           class="mb-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400"
         >
           {content}
         </p>
-        <!-- Display a button that navigates user back to the previous page -->
+        <!-- Mostrar un botón que permite volver a la página anterior -->
         <Btn404 title={btnTitle} id="go-back" />
       </div>
     </div>
   </section>
 </MainLayout>
 
-<!-- JavaScript code to handle going back to the previous page -->
+<!-- Código JavaScript para manejar la acción del botón de "volver atrás" -->
 <script>
+  // Seleccionar el botón por su ID
   const goBackButton = document.getElementById("go-back") as HTMLButtonElement;
 
+  // Agregar un evento de clic para volver a la página anterior en el historial del navegador
   goBackButton.addEventListener("click", () => {
     history.back();
   });

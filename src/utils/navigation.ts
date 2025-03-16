@@ -1,32 +1,32 @@
-// An array of links for navigation bar
+// Un arreglo de enlaces para la barra de navegación
 const navBarLinks = [
-  { name: "Home", url: "/" },
-  { name: "Products", url: "/products" },
-  { name: "Services", url: "/services" },
+  { name: "Inicio", url: "/" },
+  { name: "Productos", url: "/products" },
+  { name: "Servicios", url: "/services" },
   { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" },
+  { name: "Contacto", url: "/contact" },
 ];
-// An array of links for footer
+// Un arreglo de enlaces para el pie de página
 const footerLinks = [
   {
-    section: "Ecosystem",
+    section: "Ecosistema",
     links: [
-      { name: "Documentation", url: "/welcome-to-docs/" },
-      { name: "Tools & Equipment", url: "/products" },
-      { name: "Construction Services", url: "/services" },
+      { name: "Documentación", url: "/welcome-to-docs/" },
+      { name: "Herramientas y Equipos", url: "/products" },
+      { name: "Servicios de Construcción", url: "/services" },
     ],
   },
   {
-    section: "Company",
+    section: "Compañía",
     links: [
-      { name: "About us", url: "#" },
+      { name: "Sobre nosotros", url: "#" },
       { name: "Blog", url: "/blog" },
-      { name: "Careers", url: "#" },
-      { name: "Customers", url: "#" },
+      { name: "Carreras | Libro", url: "/libro" },
+      { name: "Clientes", url: "#" },
     ],
   },
 ];
-// An object of links for social icons
+// Un objeto de enlaces para íconos sociales
 const socialLinks = {
   facebook: "https://www.facebook.com/",
   x: "https://twitter.com/",

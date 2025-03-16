@@ -1,40 +1,45 @@
 ---
-// Import necessary components from their individual files
+// Importar los componentes necesarios desde sus archivos individuales
 import EmailInput from "./input/EmailInput.astro";
 import PasswordInput from "./input/PasswordInput.astro";
 import Checkbox from "./input/Checkbox.astro";
 import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
 import GoogleBtn from "@components/ui/buttons/GoogleBtn.astro";
 
-// Variables for customization of the LoginModal Component
-
+// Variables para la personalización del componente LoginModal
 const config = {
-  id: "hs-toggle-between-modals-login-modal", // Modal IDENTIFIER
-  title: "Sign in", // Main HEADING
-  subTitle: "Don't have an account yet?", // Sub-Heading TEXT
-  registerBtn: "Sign up here", // Text for REGISTRATION BUTTON
-  registerBtnDataHS: "#hs-toggle-between-modals-register-modal", // TARGET LINK for registration button
+  id: "hs-toggle-between-modals-login-modal", // Identificador del modal
+  title: "Iniciar sesión", // Encabezado principal del modal
+  subTitle: "¿No tienes una cuenta aún?", // Texto del subtítulo
+  registerBtn: "Regístrate aquí", // Texto para el botón de registro
+  registerBtnDataHS: "#hs-toggle-between-modals-register-modal", // Enlace destino para el botón de registro
 };
 ---
 
+<!-- Elemento raíz del modal con el id y estilos correspondientes -->
 <div
   id={config.id}
   class="hs-overlay absolute start-0 top-0 z-50 hidden h-full w-full hs-overlay-backdrop-open:bg-neutral-900/90"
 >
+  <!-- Contenedor del contenido del modal con animaciones de transición -->
   <div
     class="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:mx-auto sm:w-full sm:max-w-lg"
   >
     <div class="mx-auto w-full max-w-md p-6">
+      <!-- Caja principal del modal con bordes, fondo y sombra -->
       <div
         class="mt-7 rounded-xl border border-neutral-200 bg-neutral-100 shadow-xs dark:border-neutral-700 dark:bg-neutral-800"
       >
         <div class="p-4 sm:p-7">
+          <!-- Sección de encabezado del modal -->
           <div class="text-center">
+            <!-- Título del modal -->
             <h2
               class="block text-2xl font-bold text-neutral-800 dark:text-neutral-200"
             >
               {config.title}
             </h2>
+            <!-- Subtítulo y botón para cambiar al modal de registro -->
             <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
               {config.subTitle}
               <button
@@ -45,31 +50,34 @@ const config = {
               </button>
             </p>
           </div>
+          <!-- Sección del formulario de inicio de sesión -->
           <div class="mt-5">
-            <GoogleBtn title="Sign in with Google" />
+            <!-- Botón para iniciar sesión con Google -->
+            <GoogleBtn title="Inicia sesión con Google" />
 
+            <!-- Línea divisoria con el texto "O" -->
             <div
               class="flex items-center py-3 text-xs uppercase text-neutral-400 before:me-6 before:flex-[1_1_0%] before:border-t before:border-neutral-200 after:ms-6 after:flex-[1_1_0%] after:border-t after:border-neutral-200 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600"
             >
-              Or
+              O
             </div>
-            <!-- The container for the form -->
+            <!-- Contenedor para el formulario de inicio de sesión -->
             <form>
-              <!-- A grid layout for the form fields -->
+              <!-- Diseño de grid para organizar los campos del formulario -->
               <div class="grid gap-y-4">
-                <!-- The email input field -->
+                <!-- Campo de entrada para el correo electrónico -->
                 <EmailInput id="login-email" errorId="login-email-error" />
-                <!-- The password input field -->
+                <!-- Campo de entrada para la contraseña, con opción para recuperar contraseña -->
                 <PasswordInput
                   forgot={true}
                   id="password"
                   errorId="login-password-error"
-                  content="8+ characters required"
+                  content="Se requieren 8+ caracteres"
                 />
-                <!-- The remember-me checkbox -->
+                <!-- Checkbox para la opción "Recordarme" -->
                 <Checkbox id="remember-me" />
-                <!-- The sign-in button -->
-                <AuthBtn title="Sign in" />
+                <!-- Botón para enviar el formulario e iniciar sesión -->
+                <AuthBtn title="Iniciar sesión" />
               </div>
             </form>
           </div>

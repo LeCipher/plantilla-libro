@@ -1,5 +1,5 @@
 ---
-// Import section components
+// Importar los componentes de la sección
 import MainLayout from "@/layouts/MainLayout.astro";
 import ProductTabBtn from "@components/ui/buttons/ProductTabBtn.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
@@ -7,21 +7,22 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { SITE } from "@data/constants";
 
-// Global declaration for gsap animation library
+// Declaración global para la biblioteca de animación gsap
 declare global {
   interface Window {
     gsap: any;
   }
 }
 
-// This gets the static paths for all the unique products
-
+// Esto obtiene las rutas estáticas para todos los productos únicos
 export async function getStaticPaths() {
+  // Obtener todas las entradas de productos que comienzan con "en/"
   const productEntries = await getCollection("products", ({ id }) =>
     id.startsWith("en/")
   );
   return productEntries.map((product) => {
-    const idWithoutLang = product.id.replace(/^en\//, ""); // Remove the "en/" prefix
+    // Eliminar el prefijo "en/" del id
+    const idWithoutLang = product.id.replace(/^en\//, "");
     return {
       params: { id: idWithoutLang },
       props: { product },
@@ -29,19 +30,25 @@ export async function getStaticPaths() {
   });
 }
 
+// Extraer el producto de las propiedades de Astro
 const { product } = Astro.props;
 
+// Definir el título de la página combinando el título del producto y el título del sitio
 const pageTitle: string = `${product.data.title} | ${SITE.title}`;
 ---
 
+<!-- Layout principal que envuelve toda la página -->
 <MainLayout title={pageTitle}>
+  <!-- Capa de superposición para efectos de animación -->
   <div id="overlay" class="fixed inset-0 bg-neutral-200 dark:bg-neutral-800">
   </div>
 
+  <!-- Sección principal con el contenido del producto -->
   <section
     class="mx-auto flex max-w-[85rem] flex-col px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
   >
     <div>
+      <!-- Texto principal del producto con animación de desvanecimiento -->
       <p
         id="fadeText"
         class="mb-8 max-w-prose text-pretty font-light text-neutral-700 dark:text-neutral-300 sm:text-xl"
@@ -52,17 +59,21 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     <div
       class="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0"
     >
+      <!-- Contenedor con animación de desvanecimiento y subida -->
       <div id="fadeInUp">
+        <!-- Título del producto -->
         <h1
           class="block text-4xl font-bold tracking-tighter text-neutral-800 dark:text-neutral-200 sm:text-5xl md:text-6xl lg:text-7xl"
         >
           {product.data.title}
         </h1>
+        <!-- Descripción corta del producto -->
         <p class="text-lg text-neutral-600 dark:text-neutral-400">
           {product.data.description}
         </p>
       </div>
       <div>
+        <!-- Imagen principal del producto con animación de movimiento a la derecha -->
         <Image
           id="fadeInMoveRight"
           src={product.data.main.imgMain}
@@ -75,13 +86,15 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     </div>
   </section>
 
+  <!-- Sección de navegación de pestañas para mostrar distintas secciones del producto -->
   <div class="mx-auto max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14">
     <nav
       class="mx-auto grid max-w-6xl gap-y-px sm:flex sm:gap-x-4 sm:gap-y-0"
-      aria-label="Tabs"
+      aria-label="Pestañas"
       role="tablist"
     >
       {
+        // Crear un botón de pestaña para cada pestaña definida en el producto
         product.data.tabs.map((tab, index) => (
           <ProductTabBtn
             title={tab.title}
@@ -94,21 +107,25 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     </nav>
 
     <div class="mt-12 md:mt-16">
+      <!-- Panel de contenido de la primera pestaña -->
       <div id="tabs-with-card-1" role="tabpanel">
         <div class="mx-auto max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
           <div class="grid gap-12 md:grid-cols-2">
             <div class="lg:w-3/4">
+              <!-- Título de la descripción larga del producto -->
               <h2
                 class="text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:leading-tight lg:text-4xl"
               >
                 {product.data.longDescription.title}
               </h2>
+              <!-- Subtítulo o descripción extendida -->
               <p
                 class="mt-3 text-pretty text-neutral-600 dark:text-neutral-400"
               >
                 {product.data.longDescription.subTitle}
               </p>
               <p class="mt-5">
+                <!-- Botón de llamada a la acción principal -->
                 <PrimaryCTA
                   title={product.data.longDescription.btnTitle}
                   url={product.data.longDescription.btnURL}
@@ -116,6 +133,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
               </p>
             </div>
 
+            <!-- Lista de elementos de descripción adicional -->
             <div class="space-y-6 lg:space-y-10">
               {
                 product.data.descriptionList.map((list) => (
@@ -136,6 +154,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
         </div>
       </div>
 
+      <!-- Panel de contenido de la segunda pestaña (oculto por defecto) -->
       <div id="tabs-with-card-2" class="hidden" role="tabpanel">
         <div class="mx-auto max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
           <div class="grid w-full grid-cols-1 gap-x-16 md:grid-cols-2">
@@ -190,12 +209,12 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
                             </thead>
                             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
                               {product.data.tableData?.map((row) =>
-                                // Wrap each row's content in a separate <tr> element
+                                // Encerrar el contenido de cada fila en un elemento <tr> separado
                                 row.description.map((rowData) => (
                                   <tr>
-                                    {/* Iterate through each cell value in the row's description array */}
+                                    {/* Iterar por cada valor de celda en el array de descripción de la fila */}
                                     {rowData.map((cellValue) => (
-                                      // Render each cell value in its own <td> element
+                                      // Renderizar cada valor de celda en su propio elemento <td>
                                       <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
                                         {cellValue}
                                       </td>
@@ -218,6 +237,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     </div>
   </div>
 
+  <!-- Panel de planos (blueprints) del producto, oculto por defecto -->
   <div id="tabs-with-card-3" class="hidden" role="tabpanel">
     <div class="mx-auto mb-20 flex w-full md:mb-28 2xl:w-4/5">
       <div
@@ -228,7 +248,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
             <Image
               src={product.data.blueprints.first}
               class="h-full w-full object-cover object-center"
-              alt="Blueprint Illustration"
+              alt="Ilustración del plano"
               format={"avif"}
             />
           )
@@ -241,7 +261,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
             <Image
               src={product.data.blueprints.second}
               class="h-full w-full object-cover object-center"
-              alt="Blueprint Illustration"
+              alt="Ilustración del plano"
               format={"avif"}
             />
           )
@@ -251,9 +271,11 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
   </div>
 </MainLayout>
 
+<!-- Script para configurar y ejecutar animaciones con gsap -->
 <script>
   import { gsap } from "gsap";
 
+  // Definición del tipo para las configuraciones de animación
   type AnimationSettings = {
     autoAlpha?: number;
     y?: number;
@@ -261,6 +283,11 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     willChange?: string;
   };
 
+  /**
+   * Función para establecer los valores por defecto de animación para un elemento.
+   * @param id - El selector del elemento.
+   * @param settings - Configuraciones de animación.
+   */
   function setElementAnimationDefaults(
     id: string,
     settings: AnimationSettings
@@ -268,6 +295,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     gsap.set(id, settings);
   }
 
+  // Configurar animaciones por defecto para los elementos específicos
   setElementAnimationDefaults("#fadeText", {
     autoAlpha: 0,
     y: 50,
@@ -286,6 +314,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
     willChange: "transform, opacity",
   });
 
+  // Crear una línea de tiempo para encadenar las animaciones
   let timeline = gsap.timeline({ defaults: { overwrite: "auto" } });
 
   timeline.to("#fadeText", {
@@ -310,8 +339,15 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
 
   timeline.to("#overlay", { duration: 1, autoAlpha: 0, delay: 0.2 });
 </script>
+
+<!-- Script para manejar la interacción de los botones de pestañas -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    /**
+     * Función para desactivar un botón de pestaña.
+     * @param btn - Botón a desactivar.
+     * @param activeButton - Botón actualmente activo.
+     */
     function setButtonInactive(btn: any, activeButton: any) {
       if (btn !== activeButton) {
         btn.classList.remove(
@@ -337,6 +373,10 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       }
     }
 
+    /**
+     * Función para activar un botón de pestaña.
+     * @param button - Botón a activar.
+     */
     function activateButton(button: any) {
       button.classList.add(
         "active",
@@ -360,6 +400,12 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       );
     }
 
+    /**
+     * Función para cambiar el estilo del encabezado dentro de un botón de pestaña.
+     * @param button - Botón cuyo encabezado se va a modificar.
+     * @param addClasses - Clases CSS a agregar.
+     * @param removeClasses - Clases CSS a eliminar.
+     */
     function changeHeadingStyle(
       button: any,
       addClasses: any,
@@ -372,8 +418,10 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       }
     }
 
+    // Seleccionar todos los botones de pestaña que tengan el atributo data-target
     const tabButtons = document.querySelectorAll("[data-target]");
 
+    // Aplicar estilo al primer botón de pestaña por defecto
     if (tabButtons.length > 0) {
       changeHeadingStyle(
         tabButtons[0],
@@ -382,6 +430,7 @@ const pageTitle: string = `${product.data.title} | ${SITE.title}`;
       );
     }
 
+    // Agregar un evento de clic a cada botón de pestaña para gestionar la activación/desactivación
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         tabButtons.forEach((btn) => setButtonInactive(btn, button));

@@ -1,15 +1,15 @@
 ---
-// Importing necessary components
+// Importar componentes necesarios
 import Meta from "@components/Meta.astro";
 import Navbar from "@components/sections/navbar&footer/Navbar.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import { SITE } from "@data/constants";
 import "@styles/global.css";
 
-// Setting expected props
-const { title = SITE.title, meta, structuredData, lang = "en" } = Astro.props;
+// Definir props esperadas con valores por defecto
+const { title = SITE.title, meta, structuredData, lang = "es" } = Astro.props;
 
-// Interface to type-check the properties
+// Interfaz para verificar tipos de las propiedades
 interface Props {
   title?: string;
   meta?: string;
@@ -19,17 +19,17 @@ interface Props {
 ---
 
 <!--
-This is the main structure for the page.
-We set the language of the page to English and add classes for scrollbar and scroll behavior.
+Estructura principal de la página.
+Establecemos el idioma a español y clases para ocultar la barra de desplazamiento y gestionar desplazamiento suave.
 -->
 <html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
   <head>
-    <!-- Adding metadata to the HTML document -->
+    <!-- Añadir metadatos al documento HTML -->
     <Meta meta={meta} structuredData={structuredData} />
-    <!-- Define the title of the page -->
+    <!-- Definir el título de la página -->
     <title>{title}</title>
     <script is:inline>
-      // Script to handle dark mode. It will check if the theme is stored in localStorage or if dark theme is preferred by system settings
+      // Script para manejar el modo oscuro. Verifica localStorage o preferencias del sistema
       if (
         localStorage.getItem("hs_theme") === "dark" ||
         (!("hs_theme" in localStorage) &&
@@ -48,8 +48,8 @@ We set the language of the page to English and add classes for scrollbar and scr
     class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800"
   >
     <!--
-    Setting up the main structure of the page.
-    The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
+    Estructura principal:
+    Navbar en la parte superior, un slot para contenido principal y FooterSection en la parte inferior.
     -->
     <div class="mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8">
       <Navbar />
@@ -63,7 +63,7 @@ We set the language of the page to English and add classes for scrollbar and scr
       import "preline/preline.js";
     </script>
     <style>
-      /* CSS rules for the page scrollbar */
+      /* Reglas CSS para ocultar la barra de desplazamiento */
       .scrollbar-hide::-webkit-scrollbar {
         display: none;
       }

@@ -1,32 +1,37 @@
 ---
-// Import the necessary components
-import MainLayout from "@/layouts/MainLayout.astro";
-import ContactSection from "@components/sections/misc/ContactSection.astro";
-import { SITE } from "@data/constants";
+// Importar los componentes necesarios
+import MainLayout from "@/layouts/MainLayout.astro"; // Importa el layout principal para la estructura de la página
+import ContactSection from "@components/sections/misc/ContactSection.astro"; // Importa la sección de contacto
+import { SITE } from "@data/constants"; // Importa las constantes definidas para el sitio
 
-const pageTitle: string = `Contact | ${SITE.title}`;
+// Definir el título de la página utilizando una plantilla de texto y una constante del sitio
+const pageTitle: string = `Contacto | ${SITE.title}`;
 ---
 
-<!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
+<!-- 
+Utilizando MainLayout como contenedor exterior de la página y definiendo metadatos (structuredData) para fines de SEO.
+Los metadatos ayudan a los motores de búsqueda a entender el contenido y la estructura de la página.
+-->
 <MainLayout
   title={pageTitle}
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/contact",
-    "url": "https://screwfast.uk/contact",
-    "name": "Contact Us | ScrewFast",
+    "@id": "https://screwfast.uk/contact", // Identificador único de la página
+    "url": "https://screwfast.uk/contact", // URL canónica de la página
+    "name": "Contáctanos | ScrewFast", // Nombre de la página para propósitos de SEO
     "description":
-      "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.",
+      "¿Tienes preguntas o quieres discutir un proyecto? Contáctanos y diseñemos la solución perfecta con nuestras herramientas y servicios.", // Descripción que resume el contenido de la página
     "isPartOf": {
       "@type": "WebSite",
-      "url": "https://screwfast.uk",
-      "name": "ScrewFast",
+      "url": "https://screwfast.uk", // URL del sitio web principal
+      "name": "ScrewFast", // Nombre del sitio web
       "description":
-        "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
+        "ScrewFast ofrece herramientas de hardware de primera categoría y servicios expertos de construcción para satisfacer todas tus necesidades de proyecto.", // Descripción del sitio web
     },
-    "inLanguage": "en-US"
+    "inLanguage": "es-ES" // Idioma de la página definido en español de España
   }}
 >
+  <!-- Incluir la sección de contacto dentro del layout principal -->
   <ContactSection />
 </MainLayout>

@@ -1,29 +1,29 @@
 {
-  "subTitle": "Ask us anything about our brand and products, and get factual responses.",
+  "subTitle": "Pregúntanos cualquier cosa sobre nuestra marca y productos, y recibe respuestas precisas.",
   "faqs": [
     {
-      "question": "What types of tools are included in the Starter Kit?",
-      "answer": "The Starter Kit features essential hand and power tools for diverse DIY projects, including hammers, drills, screwdrivers, and a variety of fasteners. It's a curated selection to help beginners and experienced DIYers alike tackle most home improvement tasks."
+      "question": "¿Qué tipos de herramientas están incluidas en el Kit Inicial?",
+      "answer": "El Kit Inicial incluye herramientas esenciales manuales y eléctricas para diversos proyectos de bricolaje, incluyendo martillos, taladros, destornilladores y una variedad de sujetadores. Es una selección curada para ayudar tanto a principiantes como a aficionados experimentados a realizar la mayoría de las tareas de mejora del hogar."
     },
     {
-      "question": "Can I upgrade from the Starter Kit to the Professional Toolbox?",
-      "answer": "Absolutely! You can upgrade to the Professional Toolbox at any time to access a wider range of high-quality tools, enjoy priority customer support, and receive exclusive content. Contact our support team for a seamless transition."
+      "question": "¿Puedo actualizar del Kit Inicial a la Caja de Herramientas Profesional?",
+      "answer": "¡Claro que sí! Puedes actualizar a la Caja de Herramientas Profesional en cualquier momento para acceder a una mayor variedad de herramientas de alta calidad, disfrutar de soporte prioritario y recibir contenido exclusivo. Contacta a nuestro equipo de soporte para una transición sencilla."
     },
     {
-      "question": "What discounts are available for bulk orders through the Professional Toolbox plan?",
-      "answer": "Professional Toolbox members are entitled to exclusive discounts on bulk orders, the percentage of which may vary depending on the order volume. Get in touch with us to discuss your needs, and we'll provide a tailored discount structure."
+      "question": "¿Qué descuentos están disponibles para pedidos al por mayor con el plan de la Caja de Herramientas Profesional?",
+      "answer": "Los miembros del plan Caja de Herramientas Profesional tienen derecho a descuentos exclusivos en pedidos al por mayor, cuyo porcentaje puede variar dependiendo del volumen del pedido. Contáctanos para discutir tus necesidades y te ofreceremos una estructura de descuentos personalizada."
     },
     {
-      "question": "What kind of customer support can I expect?",
-      "answer": "All our customers receive dedicated email support. With the Starter Kit, you'll receive our standard support, while the Professional Toolbox plan upgrades you to priority support, meaning faster response times and specialized assistance."
+      "question": "¿Qué tipo de soporte al cliente puedo esperar?",
+      "answer": "Todos nuestros clientes reciben soporte dedicado vía correo electrónico. Con el Kit Inicial, tendrás soporte estándar, mientras que el plan Caja de Herramientas Profesional te proporciona soporte prioritario, lo que significa tiempos de respuesta más rápidos y asistencia especializada."
     },
     {
-      "question": "How current are the online resources and tutorials?",
-      "answer": "We regularly update our online resources and tutorials to reflect the latest trends in DIY and construction, as well as introductions to new tools and techniques. Our material aims to be comprehensive and user-friendly for all skill levels."
+      "question": "¿Qué tan actualizados están los recursos y tutoriales en línea?",
+      "answer": "Actualizamos regularmente nuestros recursos y tutoriales en línea para reflejar las últimas tendencias en bricolaje y construcción, así como la introducción de nuevas herramientas y técnicas. Nuestro material busca ser integral y fácil de usar para todos los niveles de habilidad."
     },
     {
-      "question": "Does ScrewFast offer services for large-scale construction projects?",
-      "answer": "Yes, our Enterprise Solutions are designed for larger companies requiring comprehensive services. We provide consultation, planning, and supply of high-grade tools and materials, as well as staffing solutions for substantial construction needs. Contact us for a customized quote."
+      "question": "¿ScrewFast ofrece servicios para proyectos de construcción a gran escala?",
+      "answer": "Sí, nuestras Soluciones Empresariales están diseñadas para compañías grandes que requieren servicios integrales. Proporcionamos consultoría, planificación y suministro de herramientas y materiales de alta calidad, así como soluciones de personal para grandes necesidades de construcción. Contáctanos para obtener una cotización personalizada."
     }
   ]
 }

@@ -1,21 +1,22 @@
 ---
-// Import necessary components from individual files
+// Importar los componentes necesarios de archivos individuales
 import EmailInput from "./input/EmailInput.astro";
 import PasswordInput from "./input/PasswordInput.astro";
 import Checkbox from "./input/Checkbox.astro";
 import GoogleBtn from "@components/ui/buttons/GoogleBtn.astro";
 import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
-// Config object for customization of the component
+
+// Objeto de configuración para personalizar el componente
 const config = {
-  id: "hs-toggle-between-modals-register-modal", // Modal identifier
-  title: "Sign up", // Main heading
-  subTitle: "Already have an account?", // Sub-heading text
-  loginBtn: "Sign in here", // Text for login button
-  loginBtnDataHS: "#hs-toggle-between-modals-login-modal", // Target link for login button
+  id: "hs-toggle-between-modals-register-modal", // Identificador del modal
+  title: "Regístrate", // Título principal del modal
+  subTitle: "¿Ya tienes una cuenta?", // Texto del subtítulo
+  loginBtn: "Inicia sesión aquí", // Texto para el botón de inicio de sesión
+  loginBtnDataHS: "#hs-toggle-between-modals-login-modal", // Enlace destino para el botón de inicio de sesión
 };
 ---
 
-<!-- Root element of the registration modal with the id and styling -->
+<!-- Elemento raíz del modal de registro con su id y estilos -->
 <div
   id={config.id}
   class="hs-overlay absolute start-0 top-0 z-50 hidden h-full w-full hs-overlay-backdrop-open:bg-neutral-900/90"
@@ -29,6 +30,7 @@ const config = {
       >
         <div class="p-4 sm:p-7">
           <div class="text-center">
+            <!-- Encabezado principal del modal -->
             <h2
               class="block text-2xl font-bold text-neutral-800 dark:text-neutral-200"
             >
@@ -36,7 +38,7 @@ const config = {
             </h2>
             <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
               {config.subTitle}
-              <!-- Button to toggle login modal -->
+              <!-- Botón para alternar al modal de inicio de sesión -->
               <button
                 class="rounded-lg p-1 font-medium text-orange-400 decoration-2 outline-hidden ring-zinc-500 hover:underline focus-visible:ring-3 dark:text-orange-400 dark:ring-zinc-200 dark:focus:outline-hidden"
                 data-hs-overlay={config.loginBtnDataHS}
@@ -45,43 +47,45 @@ const config = {
               </button>
             </p>
           </div>
-          <!-- The form for user registration -->
+          <!-- Formulario de registro de usuario -->
           <div class="mt-5">
-            <!-- Google signup button -->
-            <GoogleBtn title="Sign up with Google" />
-            <!-- Dividing line with 'Or' text -->
+            <!-- Botón para registrarse con Google -->
+            <GoogleBtn title="Regístrate con Google" />
+            <!-- Línea divisoria con el texto 'O' -->
             <div
               class="flex items-center py-3 text-xs uppercase text-neutral-400 before:me-6 before:flex-[1_1_0%] before:border-t before:border-neutral-200 after:ms-6 after:flex-[1_1_0%] after:border-t after:border-neutral-200 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600"
             >
-              Or
+              O
             </div>
-            <!-- Registration form -->
+            <!-- Formulario de registro -->
             <form>
               <div class="grid gap-y-4">
-                <!-- Email input field -->
+                <!-- Campo de entrada para el correo electrónico -->
                 <EmailInput id="register-email" errorId="register-email-error"/>
-                <!-- Password input field -->
+                <!-- Campo de entrada para la contraseña -->
                 <PasswordInput
                   id="create-password"
                   errorId="register-password-error"
-                  content="8+ characters required"
+                  content="Se requieren 8+ caracteres"
                 />
-                <!-- Password confirmation input field -->
+                <!-- Campo de entrada para confirmar la contraseña -->
                 <PasswordInput
-                  label="Confirm Password"
+                  label="Confirmar contraseña"
                   id="confirm-password"
                   errorId="confirm-password-error"
-                  content="Password does not match the password"
+                  content="La contraseña no coincide"
                 />
-                <!-- Checkbox with a label and a link for accepting the terms and conditions -->
-                <Checkbox label="I accept the " , id="terms-agree">
+                <!-- Casilla de verificación con etiqueta y enlace para aceptar los términos y condiciones -->
+                <Checkbox label="Acepto los " , id="terms-agree">
                   <a
                     class="font-medium text-orange-400 decoration-2 hover:underline dark:text-orange-400 dark:focus:outline-hidden"
-                    href="#">Terms and Conditions</a
+                    href="#"
                   >
+                    Términos y Condiciones
+                  </a>
                 </Checkbox>
-                <!-- Submit button for the registration form -->
-                <AuthBtn title="Sign up" />
+                <!-- Botón para enviar el formulario de registro -->
+                <AuthBtn title="Regístrate" />
               </div>
             </form>
           </div>

@@ -1,5 +1,5 @@
 ---
-// Importing necessary components
+/* Importando los componentes necesarios */
 import MainLayout from "@/layouts/MainLayout.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import CardSmall from "@components/ui/cards/CardSmall.astro";
@@ -7,12 +7,15 @@ import CardWide from "@components/ui/cards/CardWide.astro";
 import FeaturesStatsAlt from "@components/sections/features/FeaturesStatsAlt.astro";
 import TestimonialsSectionAlt from "@components/sections/testimonials/TestimonialsSectionAlt.astro";
 
-// Importing necessary functions from Astro
+/* Importando las funciones necesarias desde Astro */
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
 
-// Fetching all the product related content and sorting it by main.id
+/* 
+  Obteniendo todo el contenido relacionado con los productos y ordenándolo por main.id.
+  Se filtra la colección "products" para incluir solo aquellos cuyo id comienza con "en/".
+*/
 const product: CollectionEntry<"products">[] = (
   await getCollection("products", ({ id }) => {
     return id.startsWith("en/");
@@ -22,14 +25,14 @@ const product: CollectionEntry<"products">[] = (
     a.data.main.id - b.data.main.id,
 );
 
-// Define variables for page content
-const title: string = "Products";
+/* Definición de variables para el contenido de la página */
+const title: string = "Productos";
 const subTitle: string =
-  "Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts. Each of our products is crafted with precision and built to last, ensuring you have the right tool for every job.";
+  "Explora la durabilidad y precisión de las herramientas ScrewFast, diseñadas tanto para profesionales como para aficionados. Cada uno de nuestros productos está fabricado con precisión y construido para durar, asegurando que tengas la herramienta adecuada para cada trabajo.";
 
-// Testimonial data that will be rendered in the component
+/* Datos de testimonios que se renderizarán en el componente */
 const testimonials = [
-  // First testimonial data
+  // Datos del primer testimonio
   {
     content:
       " \"Since switching to ScrewFast's hardware tools, the efficiency on our construction sites has skyrocketed. The durability of the hex bolts and precision of the machine screws are simply unmatched. It's refreshing to work with a company that truly understands the daily demands of the industry.\" ",
@@ -37,9 +40,9 @@ const testimonials = [
     role: "Site Foreman | TopBuild",
     avatarSrc:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
+    avatarAlt: "Descripción de la imagen",
   },
-  // Second testimonial data
+  // Datos del segundo testimonio
   {
     content:
       " \"As an interior designer, I'm always looking for high-quality materials and tools that help bring my visions to life. ScrewFast's mixed screws assortment has been a game-changer for my projects, providing the perfect blend of quality and variety. The outstanding customer support was just the cherry on top!\" ",
@@ -47,9 +50,9 @@ const testimonials = [
     role: "Interior Designer | Creative Spaces",
     avatarSrc:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
+    avatarAlt: "Descripción de la imagen",
   },
-  // Third testimonial data
+  // Datos del tercer testimonio
   {
     content:
       " \"I’ve been a professional carpenter for over 15 years, and I can sincerely say that ScrewFast’s tap bolts and nuts are some of the best I've used. They grip like no other, and I have full confidence in every joint and fixture. Plus, the service is impeccable – they truly care about my project's success.\" ",
@@ -57,13 +60,15 @@ const testimonials = [
     role: "Master Carpenter | WoodWright",
     avatarSrc:
       "https://images.unsplash.com/photo-1474176857210-7287d38d27c6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
+    avatarAlt: "Descripción de la imagen",
   },
 ];
 
-const pageTitle: string = `Products | ${SITE.title}`;
+/* Definición del título de la página, combinando el título de la sección con el título del sitio */
+const pageTitle: string = `Productos | ${SITE.title}`;
 ---
 
+<!-- Componente MainLayout que envuelve el contenido de la página -->
 <MainLayout
   title={pageTitle}
   structuredData={{
@@ -72,7 +77,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
     "@id": "https://screwfast.uk/products",
     "url": "https://screwfast.uk/products",
     "name": "Hardware Tools | ScrewFast",
-    "description": "Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts.",
+    "description": "Explora la durabilidad y precisión de las herramientas ScrewFast, diseñadas tanto para profesionales como para aficionados.",
     "isPartOf": {
       "@type": "WebSite",
       "url": "https://screwfast.uk",
@@ -85,6 +90,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
   <div
     class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
   >
+    <!-- Encabezado de la página con título y subtítulo -->
     <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
       <div class="flex items-center gap-12">
         <h1
@@ -100,10 +106,14 @@ const pageTitle: string = `Products | ${SITE.title}`;
           )
         }
       </div>
-      <PrimaryCTA title="Customer Stories" url="#testimonials" noArrow={true} />
+      <!-- Botón de llamada a la acción primaria -->
+      <PrimaryCTA title="Historias de Clientes" url="#testimonials" noArrow={true} />
     </div>
-    <!--Displaying products in alternating styles. Alternative product gets different card styling.-->
-    <!--Maps through all product entries and displays them with either CardSmall or CardWide based on their position.-->
+    <!-- 
+      Sección para mostrar los productos con estilos alternos.
+      Se itera sobre cada entrada de producto y se muestra usando CardSmall o CardWide
+      dependiendo de la posición en el arreglo.
+    -->
     <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
       {
         product.map((product, index) => {
@@ -117,19 +127,19 @@ const pageTitle: string = `Products | ${SITE.title}`;
       }
     </section>
   </div>
-  <!--Features statistics section-->
+  <!-- Sección de estadísticas de características -->
   <FeaturesStatsAlt
-    title="Why Choose ScrewFast?"
-    subTitle="Transform your ideas into tangible results with ScrewFast tools. Whether you're starting with a sketch on a napkin or diving into a comprehensive construction project, our tools are engineered to help you build with confidence."
+    title="¿Por qué elegir ScrewFast?"
+    subTitle="Transforma tus ideas en resultados tangibles con las herramientas ScrewFast. Ya sea que comiences con un boceto en una servilleta o te sumerjas en un proyecto de construcción integral, nuestras herramientas están diseñadas para ayudarte a construir con confianza."
     benefits={[
-      "Robust and reliable tools for long-lasting performance.",
-      "Innovative solutions tailored to modern construction needs.",
-      "Customer support dedicated to your project's success.",
+      "Herramientas robustas y confiables para un rendimiento duradero.",
+      "Soluciones innovadoras adaptadas a las necesidades modernas de la construcción.",
+      "Soporte al cliente dedicado al éxito de tu proyecto.",
     ]}
   />
-  <!--Testimonials section-->
+  <!-- Sección de testimonios -->
   <TestimonialsSectionAlt
-    title="What Our Customers Say"
+    title="Lo que dicen nuestros clientes"
     testimonials={testimonials}
   />
 </MainLayout>

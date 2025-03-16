@@ -1,5 +1,5 @@
 ---
-// Import the necessary dependencies
+// Importa las dependencias necesarias
 import FooterSocialLink from "@components/ui/links/FooterSocialLink.astro";
 import EmailFooterInput from "@components/ui/forms/input/EmailFooterInput.astro";
 import enStrings from "@utils/navigation.ts";
@@ -8,14 +8,14 @@ import Icon from "@components/ui/icons/Icon.astro";
 import BrandLogo from "@components/BrandLogo.astro";
 import { SITE } from "@data/constants";
 
-// Select the correct translation based on the page's lang prop:
+// Selecciona la traducción correcta basada en la propiedad de idioma de la página:
 const strings = Astro.currentLocale === "fr" ? frStrings : enStrings;
 
-// Define the variables that will be used in this component
-const sectionThreeTitle: string = Astro.currentLocale === "fr" ? "Rester à jour" : "Stay up to date";
+// Define las variables que se utilizarán en este componente
+const sectionThreeTitle: string = Astro.currentLocale === "fr" ? "Rester à jour" : "Mantente actualizado";
 const sectionThreeContent: string = Astro.currentLocale === "fr" ? "Restez informé des derniers outils et des offres exclusives." :
-  "Stay updated with the latest tools and exclusive deals.";
-const crafted: string = Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafted by";
+  "Mantente informado de las últimas herramientas y ofertas exclusivas.";
+const crafted: string = Astro.currentLocale === "fr" ? "Fabriqué par" : "Creado por";
 ---
 
 <footer class="w-full bg-neutral-300 dark:bg-neutral-900">
@@ -24,10 +24,10 @@ const crafted: string = Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafte
   >
     <div class="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
       <div class="col-span-full lg:col-span-1">
-        <!-- Brand Logo -->
+        <!-- Logotipo de la marca -->
         <BrandLogo class="h-auto w-32" />
       </div>
-      <!-- An array of links for Product and Company sections -->
+      <!-- Un arreglo de enlaces para las secciones de Producto y Empresa -->
       {
         strings.footerLinks.map((section) => (
           <div class="col-span-1">
@@ -45,7 +45,7 @@ const crafted: string = Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafte
                   </a>
                   {section.section === "Company" && index === 2 ? (
                     <span class="ms-1 inline rounded-lg bg-orange-500 px-2 py-1 text-xs font-bold text-neutral-50">
-                      We're hiring!
+                      ¡Estamos contratando!
                     </span>
                   ) : null}
                 </li>
@@ -79,12 +79,12 @@ const crafted: string = Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafte
             class="rounded-lg font-medium underline underline-offset-2 outline-hidden ring-zinc-500 transition duration-300 hover:text-neutral-700 hover:decoration-dashed focus:outline-hidden focus-visible:ring-3 dark:ring-zinc-200 dark:hover:text-neutral-300"
             href="https://www.gulamoff.dev/"
             target="_blank"
-            rel="noopener noreferrer">gulamoff</a
+            rel="noopener noreferrer">LeCipher</a
           >.
         </p>
       </div>
 
-      <!-- Social Brands -->
+      <!-- Marcas sociales -->
       <div>
         <FooterSocialLink url={strings.socialLinks.facebook}
           ><Icon name="facebookFooter" />

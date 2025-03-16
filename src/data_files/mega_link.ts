@@ -1,42 +1,44 @@
-// Define data structures for services and success stories
+// Estructuras de datos para servicios e historias de éxito
 export const servicesData = [
   {
-    title: "Explore Advice and Explanations",
+    title: "Explora Consejos y Explicaciones",
     description:
-      "Dive deep into helpful guides and explanations for all of ScrewFast's features",
+      "Profundiza en guías útiles y explicaciones claras sobre todas las funciones de ScrewFast.",
     icon: "guides",
     url: "#",
   },
   {
-    title: "Discover Integrations",
+    title: "Descubre Integraciones",
     description:
-      "Supercharge Your Workflow. Seamless integrations with all your favorite tools",
+      "Potencia tu flujo de trabajo con integraciones fluidas con todas tus herramientas favoritas.",
     icon: "puzzle",
     url: "#",
   },
   {
-    title: "Expert Services",
-    description: "Go beyond tools with ScrewFast's expert services",
+    title: "Servicios de Expertos",
+    description:
+      "Ve más allá de las herramientas con los servicios especializados de ScrewFast.",
     icon: "rocket",
     url: "#",
   },
   {
-    title: "Cutting-Edge Tools",
+    title: "Herramientas de Última Generación",
     description:
-      "Build Smarter, Faster. Experience next-level efficiency with ScrewFast's cutting-edge construction tools",
+      "Construye más inteligente y rápido. Experimenta eficiencia al siguiente nivel con las herramientas avanzadas de construcción de ScrewFast.",
     icon: "hammer",
     url: "#",
   },
   {
-    title: "Simple Plans",
+    title: "Planes Sencillos",
     description:
-      "Boost your efficiency with ScrewFast's straightforward, value-driven plans",
+      "Impulsa tu eficiencia con los planes sencillos y orientados al valor de ScrewFast.",
     icon: "sparks",
     url: "#",
   },
   {
-    title: "Community Forum",
-    description: "Learn, share, and connect with other ScrewFast users",
+    title: "Foro Comunitario",
+    description:
+      "Aprende, comparte y conéctate con otros usuarios de ScrewFast.",
     icon: "community",
     url: "#",
   },
@@ -46,9 +48,9 @@ export const successStoriesData = [
   {
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    alt: "Image Description",
+    alt: "Descripción de la imagen",
     description:
-      "See how ScrewFast has empowered businesses of all sizes to achieve outstanding results.",
+      "Descubre cómo ScrewFast ha ayudado a empresas de todos los tamaños a lograr resultados sobresalientes.",
     learnMoreUrl: "#",
   },
 ];

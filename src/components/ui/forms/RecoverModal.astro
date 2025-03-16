@@ -1,34 +1,35 @@
 ---
-// Import necessary components from individual files
+// Importar los componentes necesarios de archivos individuales
 import EmailInput from "./input/EmailInput.astro";
 import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
 
-// Config object for customization of the component
+// Objeto de configuración para la personalización del componente
 const config = {
-  id: "hs-toggle-between-modals-recover-modal", // Modal identifier
-  title: "Forgot password?", // Main heading
-  subTitle: "Remember your password?", // Sub-heading text
-  loginBtn: "Sign in here", // Text for login button
-  loginBtnDataHS: "#hs-toggle-between-modals-login-modal", // Target link for login button
+  id: "hs-toggle-between-modals-recover-modal", // Identificador del modal
+  title: "¿Olvidaste tu contraseña?", // Título principal del modal
+  subTitle: "¿Recuerdas tu contraseña?", // Texto del subtítulo
+  loginBtn: "Inicia sesión aquí", // Texto para el botón de inicio de sesión
+  loginBtnDataHS: "#hs-toggle-between-modals-login-modal", // Enlace destino para el botón de inicio de sesión
 };
 ---
 
-<!-- Root element of the modal with id and styling -->
+<!-- Elemento raíz del modal con su id y estilos -->
 <div
   id={config.id}
   class="hs-overlay absolute start-0 top-0 z-50 hidden h-full w-full hs-overlay-backdrop-open:bg-neutral-900/90"
 >
-  <!-- Modal content container -->
+  <!-- Contenedor del contenido del modal -->
   <div
     class="m-3 mt-0 opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:mx-auto sm:w-full sm:max-w-lg"
   >
     <div class="mx-auto w-full max-w-md p-6">
-      <!-- Actual box for the modal elements -->
+      <!-- Caja principal que contiene los elementos del modal -->
       <div
         class="mt-7 rounded-xl border border-neutral-200 bg-neutral-100 shadow-xs dark:border-neutral-700 dark:bg-neutral-800"
       >
         <div class="p-4 sm:p-7">
           <div class="text-center">
+            <!-- Título principal del modal -->
             <h2
               class="block text-2xl font-bold text-neutral-800 dark:text-neutral-200"
             >
@@ -36,7 +37,7 @@ const config = {
             </h2>
             <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
               {config.subTitle}
-              <!-- Button that, when clicked, opens the login modal -->
+              <!-- Botón que, al hacer clic, abre el modal de inicio de sesión -->
               <button
                 class="rounded-lg p-1 font-medium text-orange-400 decoration-2 outline-hidden ring-zinc-500 hover:underline focus-visible:ring-3 dark:text-orange-400 dark:ring-zinc-200 dark:focus:outline-hidden"
                 data-hs-overlay={config.loginBtnDataHS}
@@ -47,13 +48,13 @@ const config = {
           </div>
 
           <div class="mt-5">
-            <!-- The form for password recovery -->
+            <!-- Formulario para la recuperación de contraseña -->
             <form>
               <div class="grid gap-y-4">
-                <!-- Email input field imported from EmailInput component -->
+                <!-- Campo de entrada de correo electrónico importado desde el componente EmailInput -->
                 <EmailInput id="recover-email" errorId="recover-email-error"/>
-                <!-- Reset password button imported from AuthBtn component -->
-                <AuthBtn title="Reset password" />
+                <!-- Botón para restablecer la contraseña importado desde el componente AuthBtn -->
+                <AuthBtn title="Restablecer contraseña" />
               </div>
             </form>
           </div>

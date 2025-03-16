@@ -1,83 +1,98 @@
 ---
-// Import section components
-import { SITE } from "@data/constants";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+/* 
+  Importar los componentes y módulos necesarios 
+*/
+import { SITE } from "@data/constants"; // Constantes del sitio (por ejemplo, título, URL, etc.)
+import MainLayout from "@/layouts/MainLayout.astro"; // Layout principal de la aplicación
+import { Image } from "astro:assets"; // Componente para optimizar y gestionar imágenes
+import { getCollection, render } from "astro:content"; // Funciones para trabajar con el contenido
 
-// Use `getStaticPaths` to generate static routes for generated pages on build
+/* 
+  Utilizar `getStaticPaths` para generar rutas estáticas en tiempo de compilación.
+  Esto es necesario para las rutas dinámicas, ya que define cuáles páginas se deben generar.
+*/
 export async function getStaticPaths() {
+  // Obtener las publicaciones de "insights" que tengan un id que empiece por "en/"
   const insightPosts = await getCollection("insights", ({ id }) =>
     id.startsWith("en/")
   );
+  // Para cada publicación, se mapea para crear la ruta estática y sus propiedades
   return insightPosts.map((post) => {
-    const idWithoutLang = post.id.replace(/^en\//, ""); // Remove the "fr/" prefix
+    // Eliminar el prefijo "en/" del id.
+    // Nota: el comentario original menciona "fr/", lo cual parece ser un error tipográfico.
+    const idWithoutLang = post.id.replace(/^en\//, "");
     return {
-      params: { id: idWithoutLang },
-      props: { post },
+      params: { id: idWithoutLang }, // Parámetro de la ruta (usado en la URL dinámica)
+      props: { post }, // Propiedades que se pasarán a la página
     };
   });
 }
 
-// Get the props for this page that define a specific insight post
+// Obtener las propiedades que definen una entrada específica de "insight" para esta página
 const { post } = Astro.props;
 
+// Renderizar el contenido de la publicación para obtener el componente Content que contiene el HTML renderizado
 const { Content } = await render(post);
 
+// Definir el título de la página combinando el título de la publicación con el título del sitio
 const pageTitle: string = `${post.data.title} | ${SITE.title}`;
 ---
 
+<!-- Estructura de la página utilizando el layout principal -->
 <MainLayout title={pageTitle}>
+  <!-- Sección principal de la página -->
   <section class="py-6 sm:py-8 lg:py-12">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 md:px-8">
       <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
+        <!-- Columna izquierda: Imagen de la tarjeta, barra de progreso y Tabla de Contenidos (ToC) -->
         <div>
+          <!-- Contenedor de la imagen con estilos para recortes y sombras -->
           <div class="h-64 overflow-hidden rounded-lg shadow-lg md:h-auto">
             <Image
               class="h-full w-full object-cover object-center"
-              src={post.data.cardImage}
-              alt={post.data.cardImageAlt}
+              src={post.data.cardImage}       
+              alt={post.data.cardImageAlt}      
               draggable={"false"}
               format={"avif"}
             />
           </div>
+          <!-- Barra de progreso para dispositivos móviles -->
           <div
             id="progress-mobile"
             class="fixed left-0 top-0 h-2 w-full bg-linear-to-r from-orange-400/30 to-orange-400 md:hidden"
           >
           </div>
+          <!-- Contenedor del indicador "pin" y la Tabla de Contenidos, visible en dispositivos medianos y superiores -->
           <div id="pin" class="mt-10 hidden space-y-4 md:block">
-            <div
-              class="h-px w-full overflow-hidden bg-neutral-300 dark:bg-neutral-700"
-            >
+            <div class="h-px w-full overflow-hidden bg-neutral-300 dark:bg-neutral-700">
+              <!-- Barra de progreso para escritorio -->
               <div
                 id="progress"
                 class="h-px w-full bg-linear-to-r from-orange-400/30 to-orange-400"
               >
               </div>
             </div>
+            <!-- Título de la Tabla de Contenidos -->
             <p class="text-pretty text-sm text-neutral-500">
-              Table of Contents:
+              Tabla de Contenidos:
             </p>
+            <!-- Contenedor para la lista de la Tabla de Contenidos -->
             <div id="toc" class="">
-              <ul
-                class="space-y-2 text-pretty text-base text-neutral-700 transition duration-300 dark:text-neutral-400"
-              >
+              <ul class="space-y-2 text-pretty text-base text-neutral-700 transition duration-300 dark:text-neutral-400">
               </ul>
             </div>
           </div>
         </div>
 
+        <!-- Columna derecha: Título de la publicación y contenido del artículo -->
         <div class="md:pt-8">
-          <h1
-            class="mb-4 text-balance text-center text-2xl font-bold text-neutral-800 dark:text-neutral-200 sm:text-3xl md:mb-6 md:text-left"
-          >
+          <!-- Título de la publicación -->
+          <h1 class="mb-4 text-balance text-center text-2xl font-bold text-neutral-800 dark:text-neutral-200 sm:text-3xl md:mb-6 md:text-left">
             {post.data.title}
           </h1>
 
-          <article
-            class="text-pretty text-lg text-neutral-700 dark:text-neutral-300"
-          >
+          <!-- Artículo que contiene el contenido renderizado de la publicación -->
+          <article class="text-pretty text-lg text-neutral-700 dark:text-neutral-300">
             <Content />
           </article>
         </div>
@@ -86,15 +101,19 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
   </section>
 </MainLayout>
 
+<!-- Estilos globales -->
 <style is:global>
+  /* Variables CSS globales */
   :root {
     --transition-cubic: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
+  /* Habilitar desplazamiento suave en la página */
   html {
     scroll-behavior: smooth;
   }
 
+  /* Estilos para los encabezados dentro de los artículos */
   article h2,
   article h3,
   article h4,
@@ -102,9 +121,10 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
   article h6 {
     font-weight: bold;
     margin-top: 2.5rem;
-    scroll-margin-top: 3rem;
+    scroll-margin-top: 3rem; /* Espacio extra para que el encabezado no quede oculto al desplazarse */
   }
 
+  /* Tamaños y estilos específicos para cada nivel de encabezado */
   h2 {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -120,10 +140,12 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
     line-height: 1.75rem;
   }
 
+  /* Espaciado superior para los párrafos */
   p {
     margin-top: 1.5rem;
   }
 
+  /* Estilos para cada elemento de la Tabla de Contenidos */
   #toc li {
     display: flex;
     align-items: center;
@@ -131,10 +153,12 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
     transition: all 300ms var(--transition-cubic);
   }
 
+  /* Estilo para el elemento seleccionado en la Tabla de Contenidos */
   #toc li.selected {
     opacity: 1;
   }
 
+  /* Estilos para el SVG dentro de la Tabla de Contenidos */
   #toc li svg {
     width: 0;
     height: 0;
@@ -143,6 +167,7 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
       width 400ms var(--transition-cubic);
   }
 
+  /* Ajuste de tamaño del SVG cuando su elemento está seleccionado */
   #toc li.selected svg {
     width: 1.25rem;
     height: 1.25rem;
@@ -150,25 +175,34 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
   }
 </style>
 
+<!-- Script para actualizar la barra de progreso en función del scroll -->
 <script>
+  // Función que se ejecuta al hacer scroll para actualizar el ancho de la barra de progreso
   const onScroll = (): void => {
+    // Seleccionar el elemento <article> que contiene el contenido principal
     const article = document.querySelector("article");
-    if (!article) return;
+    if (!article) return; // Si no se encuentra el artículo, salir de la función
 
+    // Obtener la altura y la posición superior del artículo
     const articleHeight = article.offsetHeight;
     const articleOffsetTop = article.offsetTop;
 
+    // Obtener la posición actual del scroll en la ventana
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
+    // Verificar que se obtuvieron los valores necesarios para el cálculo
     if (articleHeight && articleOffsetTop && scrollTop) {
+      // Calcular el porcentaje de progreso en base al scroll
       const progress =
         ((scrollTop - articleOffsetTop) /
           (articleHeight - window.innerHeight)) *
         100;
 
+      // Seleccionar las barras de progreso para escritorio y móvil
       const progressBar = document.getElementById("progress");
       const progressBarMobile = document.getElementById("progress-mobile");
 
+      // Si ambas barras existen, actualizar su ancho de acuerdo al progreso calculado
       if (progressBar && progressBarMobile) {
         progressBar.style.width = `${progress}%`;
         progressBarMobile.style.width = `${progress}%`;
@@ -176,10 +210,12 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
     }
   };
 
+  // Cuando el contenido del DOM esté completamente cargado
   document.addEventListener("DOMContentLoaded", (event) => {
+    // Asignar la función onScroll al evento scroll de la ventana
     window.onscroll = onScroll;
 
-    // Set initial width of progress bar
+    // Establecer el ancho inicial de las barras de progreso en 0%
     const progressBar = document.getElementById("progress");
     const progressBarMobile = document.getElementById("progress-mobile");
 
@@ -189,76 +225,97 @@ const pageTitle: string = `${post.data.title} | ${SITE.title}`;
     }
   });
 </script>
+
+<!-- Script para gestionar la animación con GSAP y la generación de la Tabla de Contenidos -->
 <script>
+  // Importar gsap y el plugin ScrollTrigger para animaciones basadas en el scroll
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+  // Registrar el plugin ScrollTrigger en gsap
   gsap.registerPlugin(ScrollTrigger);
 
+  // Crear una línea de tiempo para animar el elemento "pin" durante el scroll
   gsap.timeline({
     scrollTrigger: {
-      scrub: 1,
-      pin: true,
-      trigger: "#pin",
-      start: "top 20%",
-      endTrigger: "footer",
-      end: "top bottom",
+      scrub: 1,            // La animación se sincroniza suavemente con el scroll
+      pin: true,           // Fija el elemento mientras se realiza la animación
+      trigger: "#pin",     // Elemento que dispara la animación
+      start: "top 20%",    // Inicia la animación cuando la parte superior del trigger alcanza el 20% de la ventana
+      endTrigger: "footer",// Termina la animación al llegar al footer
+      end: "top bottom",   // Define el final de la animación
     },
   });
 
+  // Cadena de HTML que representa un ícono SVG usado en la Tabla de Contenidos
   const SVG_HTML_STRING =
     '<svg class="w-0 h-0 flex-none" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fa5a15"><path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></svg>';
 
+  /**
+   * Función para establecer el enlace activo en la Tabla de Contenidos según el id del encabezado.
+   * @param {string | null} id - El id del encabezado activo.
+   */
   function setActiveLinkById(id: string | null) {
+    // Seleccionar todos los elementos <li> dentro de la Tabla de Contenidos y remover la clase "selected"
     const listItems = document.querySelectorAll("#toc li");
     listItems.forEach((item) => item.classList.remove("selected"));
 
     if (!id) return;
 
+    // Seleccionar el enlace que tenga un href que coincida con el id del encabezado
     const activeLink = document.querySelector(`#toc a[href="#${id}"]`);
-
     if (!activeLink) return;
 
+    // Agregar la clase "selected" al elemento padre del enlace activo
     const listItem = activeLink.parentElement;
     listItem?.classList.add("selected");
   }
 
+  // Una vez que el DOM esté completamente cargado
   document.addEventListener("DOMContentLoaded", function () {
-    // The article element that contains the Markdown content
+    // Seleccionar el elemento <article> que contiene el contenido Markdown
     const article: HTMLElement | null = document.querySelector("article");
-    // The ToC container <ul> element
+    // Seleccionar el contenedor <ul> de la Tabla de Contenidos
     const tocList: HTMLElement | null = document.querySelector("#toc ul");
 
+    // Obtener todos los encabezados (h1 a h6) dentro del artículo
     const headings: NodeListOf<HTMLElement> | [] = article
       ? article.querySelectorAll("h1, h2, h3, h4, h5, h6")
       : [];
 
+    // Recorrer cada encabezado para crear una entrada en la Tabla de Contenidos
     headings.forEach((heading, i) => {
       if (heading instanceof HTMLElement) {
+        // Crear un elemento <li> para la entrada y asignar una clase que indique su nivel (por ejemplo, toc-level-h2)
         const listItem = document.createElement("li");
         listItem.className = "toc-level-" + heading.tagName.toLowerCase();
 
+        // Crear un contenedor temporal para insertar el SVG y luego obtener el SVG como nodo
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = SVG_HTML_STRING;
-
         const svg = tempDiv.firstChild;
         listItem.appendChild(svg as Node);
 
+        // Crear un enlace que apunte al id del encabezado y agregarlo al elemento <li>
         const link = document.createElement("a");
         link.href = "#" + heading.id;
         link.textContent = heading.textContent;
         listItem.appendChild(link);
 
+        // Añadir la entrada creada a la lista de la Tabla de Contenidos
         tocList?.appendChild(listItem);
 
+        // Crear una animación con gsap que detecte cuándo el encabezado entra o sale del viewport
         gsap.timeline({
           scrollTrigger: {
-            trigger: heading,
-            start: "top 20%",
+            trigger: heading,      // El encabezado actúa como disparador
+            start: "top 20%",      // Inicia cuando el encabezado alcanza el 20% desde arriba
             end: () =>
+              // Define el final de la animación basado en la altura del siguiente encabezado (o 0 si es el último)
               `bottom top+=${i === headings.length - 1 ? 0 : (headings[i + 1] as HTMLElement).getBoundingClientRect().height}`,
-            onEnter: () => setActiveLinkById(heading.id),
+            onEnter: () => setActiveLinkById(heading.id), // Al entrar, marca el enlace correspondiente como activo
             onLeaveBack: () =>
+              // Al salir hacia atrás, marca el enlace del encabezado anterior (si existe)
               setActiveLinkById((headings[i - 1] as HTMLElement)?.id),
           },
         });

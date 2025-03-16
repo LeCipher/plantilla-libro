@@ -30,7 +30,7 @@ const productsCollection = defineCollection({
       btnURL: z.string(),
     }),
     descriptionList: z.array(
-      z.object({
+      z.object({ 
         title: z.string(),
         subTitle: z.string(),
       })

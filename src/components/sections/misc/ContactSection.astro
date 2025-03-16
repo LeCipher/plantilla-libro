@@ -1,5 +1,5 @@
 ---
-// Import the necessary dependencies.
+// Importa las dependencias necesarias.
 import AuthBtn from "@components/ui/buttons/AuthBtn.astro";
 import ContactIconBlock from "@components/ui/blocks/ContactIconBlock.astro";
 import TextInput from "@components/ui/forms/input/TextInput.astro";
@@ -8,15 +8,15 @@ import PhoneInput from "@components/ui/forms/input/PhoneInput.astro";
 import TextAreaInput from "@components/ui/forms/input/TextAreaInput.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 
-// Define the variables that will be used in this component
-const title: string = "Contact us";
+// Define las variables que se utilizarán en este componente
+const title: string = "Contáctanos";
 const subTitle: string =
-  "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.";
-const formTitle: string = "Fill in the form below";
-const formSubTitle: string = "We'll get back to you in 1-2 business days.";
+  "¿Tienes preguntas o quieres discutir un proyecto? Contáctanos y diseñemos la solución perfecta con nuestras herramientas y servicios.";
+const formTitle: string = "Completa el formulario a continuación";
+const formSubTitle: string = "Te responderemos en 1-2 días hábiles.";
 ---
 
-<!-- Contact Us -->
+<!-- Contáctanos -->
 <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
   <div class="mx-auto max-w-2xl lg:max-w-5xl">
     <div class="text-center">
@@ -37,19 +37,19 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
         >
           {formTitle}
         </h2>
-        <!-- Form for user input with various input fields.-->
-        <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
+        <!-- Formulario para la entrada del usuario con varios campos de entrada.-->
+        <!-- Cada campo utiliza un componente de entrada diferente para el tipo específico de entrada (texto, correo electrónico, teléfono y área de texto)-->
         <form>
           <div class="grid gap-4">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
                 id="hs-firstname-contacts"
-                label="First Name"
+                label="Nombre"
                 name="hs-firstname-contacts"
               />
               <TextInput
                 id="hs-lastname-contacts"
-                label="Last Name"
+                label="Apellido"
                 name="hs-firstname-contacts"
               />
             </div>
@@ -57,13 +57,13 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
             <PhoneInput id="hs-phone-number" />
             <TextAreaInput
               id="hs-about-contacts"
-              label="Details"
+              label="Detalles"
               name="hs-about-contacts"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Send Message" />
+            <AuthBtn title="Enviar mensaje" />
           </div>
 
           <div class="mt-3 text-center">
@@ -74,30 +74,30 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
         </form>
       </div>
 
-      <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
+      <!-- ContactIconBlocks se utilizan para mostrar diferentes métodos de contacto, incluyendo visitar la oficina, correo electrónico, navegar por la base de conocimiento y FAQ.-->
       <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
         <ContactIconBlock
-          heading="Knowledgebase"
-          content="Browse through all of our knowledgebase articles."
+          heading="Base de conocimiento"
+          content="Explora todos nuestros artículos de la base de conocimiento."
           isLinkVisible={true}
-          linkTitle="Visit guides & tutorials"
+          linkTitle="Visita guías y tutoriales"
           linkURL="#"
           isArrowVisible={true}
           ><Icon name="question" />
         </ContactIconBlock>
 
         <ContactIconBlock
-          heading="FAQ"
-          content="Explore our FAQ for quick, clear answers to common queries."
+          heading="Preguntas frecuentes"
+          content="Explora nuestras preguntas frecuentes para obtener respuestas rápidas y claras a preguntas comunes."
           isLinkVisible={true}
-          linkTitle="Visit FAQ"
+          linkTitle="Visita FAQ"
           linkURL="#"
           isArrowVisible={true}
           ><Icon name="chatBubble" />
         </ContactIconBlock>
 
         <ContactIconBlock
-          heading="Visit our office"
+          heading="Visita nuestra oficina"
           content="UK ScrewFast"
           isAddressVisible={true}
           addressContent="72 Union Terrace, E10 4PE London"
@@ -105,8 +105,8 @@ const formSubTitle: string = "We'll get back to you in 1-2 business days.";
         </ContactIconBlock>
 
         <ContactIconBlock
-          heading="Contact us by email"
-          content="Prefer the written word? Drop us an email at"
+          heading="Contáctanos por correo electrónico"
+          content="¿Prefieres la comunicación escrita? Envíanos un correo a"
           isLinkVisible={true}
           linkTitle="support@screwfast.uk"
           linkURL="#"

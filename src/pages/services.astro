@@ -1,12 +1,12 @@
 ---
-// Import necessary components
+// Importar componentes necesarios
 import MainLayout from "@/layouts/MainLayout.astro";
 import MainSection from "@components/ui/blocks/MainSection.astro";
 import LeftSection from "@components/ui/blocks/LeftSection.astro";
 import RightSection from "@components/ui/blocks/RightSection.astro";
 import FeaturesStats from "@components/sections/features/FeaturesStats.astro";
 
-// Import necessary images
+// Importar imágenes necesarias
 import blueprints from "@images/blueprints-image.avif";
 import personWorking from "@images/person-working.avif";
 import beforeAfter from "@images/before-after.avif";
@@ -17,84 +17,87 @@ import progressBuilding from "@images/progress-building.avif";
 import underConstruction from "@images/under-construction.avif";
 import { SITE } from "@data/constants";
 
+// Definición de interfaz para los artículos
 interface Article {
-  isRightSection: boolean;
-  title: string;
-  subTitle: string;
-  btnExists?: boolean;
-  btnTitle?: string;
-  btnURL?: string;
-  single?: boolean;
-  img?: any;
-  imgAlt?: string;
-  imgOne?: any;
-  imgOneAlt?: string;
-  imgTwo?: any;
-  imgTwoAlt?: string;
+  isRightSection: boolean; // Indica si la sección aparece a la derecha
+  title: string; // Título del artículo
+  subTitle: string; // Subtítulo o descripción
+  btnExists?: boolean; // Indica si el botón debe mostrarse
+  btnTitle?: string; // Título del botón (opcional)
+  btnURL?: string; // URL del botón (opcional)
+  single?: boolean; // Indica si usa una sola imagen
+  img?: any; // Imagen única
+  imgAlt?: string; // Texto alternativo para imagen única
+  imgOne?: any; // Primera imagen (cuando son dos)
+  imgOneAlt?: string; // Texto alternativo de la primera imagen
+  imgTwo?: any; // Segunda imagen (cuando son dos)
+  imgTwoAlt?: string; // Texto alternativo de la segunda imagen
 }
 
+// Lista de artículos describiendo distintos servicios
 const articles: Article[] = [
   {
     isRightSection: true,
-    title: "Delivering Expert Guidance",
+    title: "Asesoría experta",
     subTitle:
-      "Embarking on a construction project can be overwhelming. With our professional consultation services, we guide you through every stage, ensuring you make informed decisions. Whether you are a DIY enthusiast or a skilled contractor, our experts are on hand to offer tailored advice on product selection, project scope, and compliance with local regulations.",
+      "Emprender un proyecto de construcción puede ser abrumador. Con nuestros servicios profesionales de consultoría te acompañamos en cada etapa, asegurando decisiones informadas. Ya seas aficionado al bricolaje o contratista experto, nuestros profesionales ofrecen asesoramiento personalizado en selección de productos, alcance del proyecto y cumplimiento de normativas locales.",
     single: false,
     imgOne: blueprints,
-    imgOneAlt: "Blueprints and digital tablet with construction plans.",
+    imgOneAlt: "Planos y tableta digital con planes de construcción.",
     imgTwo: personWorking,
-    imgTwoAlt: "Person working in the office",
+    imgTwoAlt: "Persona trabajando en una oficina.",
   },
   {
     isRightSection: false,
-    title: "Transforming Designs into Reality",
+    title: "Transformando diseños en realidad",
     subTitle:
-      "Our skilled craftsmen bring precision and excellence to every construction project. From minor installations to substantial structural work, ScrewFast offers reliable construction services to turn your plans into tangible outcomes. We ensure the highest standards of safety and workmanship, utilizing top-quality tools and materials from our extensive inventory.",
+      "Nuestros artesanos expertos brindan precisión y excelencia en cada proyecto. Desde instalaciones menores hasta grandes obras estructurales, ScrewFast ofrece servicios confiables para convertir tus ideas en resultados concretos, manteniendo los estándares más altos de seguridad y calidad.",
     img: beforeAfter,
-    imgAlt: "Construction site before and after",
+    imgAlt: "Obra antes y después de la construcción.",
     btnExists: true,
-    btnTitle: "Learn More",
+    btnTitle: "Más información",
     btnURL: "#",
   },
   {
     isRightSection: true,
-    title: "Navigating Projects with Professional Oversight",
+    title: "Gestión profesional de proyectos",
     subTitle:
-      "Effective project management is at the heart of any successful build. ScrewFast provides thorough planning and robust management services that keep your project on time and within budget. Let us handle the complexities of workflow coordination, resource allocation, and stakeholder communication while you focus on your vision.",
+      "La gestión eficaz es clave para el éxito en cualquier construcción. ScrewFast proporciona planificación completa y gestión sólida que mantiene tus proyectos a tiempo y dentro del presupuesto, encargándonos de coordinar tareas, recursos y comunicaciones para que te concentres en tu visión.",
     single: false,
     imgOne: constructionWorkers,
-    imgOneAlt: "Construction workers orchestrating a project",
+    imgOneAlt: "Trabajadores organizando un proyecto de construcción",
     imgTwo: aerialView,
-    imgTwoAlt: "Aerial view of managed construction",
+    imgTwoAlt: "Vista aérea de una obra gestionada",
   },
   {
     isRightSection: false,
-    title: "Ensuring Long-lasting Performance",
+    title: "Garantizando rendimiento duradero",
     subTitle:
-      "Our commitment to your project doesn't end at completion. ScrewFast offers ongoing maintenance and support services to ensure your construction's longevity and performance. From regular check-ups to emergency assistance, our responsive team is there to provide seamless support.",
+      "Nuestro compromiso no termina con la finalización del proyecto. ScrewFast ofrece servicios continuos de mantenimiento y soporte para asegurar la durabilidad y rendimiento de tu construcción, con revisiones periódicas y asistencia inmediata ante emergencias.",
     img: usingTools,
     imgAlt:
-      "Man in orange and black vest wearing white helmet holding yellow and black power tool",
+      "Persona usando chaleco naranja y casco blanco manejando una herramienta eléctrica amarilla y negra",
   },
   {
     isRightSection: true,
-    title: "Crafting Bespoke Strategies for Unique Challenges",
+    title: "Estrategias personalizadas para desafíos únicos",
     subTitle:
-      "For our larger enterprise clients, ScrewFast offers custom solutions designed to meet specific industry challenges. By understanding your unique needs, we engineer tailored strategies aimed at optimizing your operations, enhancing efficiency, and driving your business forward.",
+      "Para nuestros clientes empresariales, ScrewFast ofrece soluciones personalizadas para enfrentar desafíos específicos del sector. Analizamos tus necesidades particulares y desarrollamos estrategias hechas a la medida, optimizando operaciones, mejorando eficiencia e impulsando tu negocio.",
     single: false,
     imgOne: progressBuilding,
-    imgOneAlt: "In progress building structure",
+    imgOneAlt: "Estructura en construcción",
     imgTwo: underConstruction,
-    imgTwoAlt: "Brown and gray building under construction",
+    imgTwoAlt: "Edificio marrón y gris en construcción",
     btnExists: true,
-    btnTitle: "Read more",
+    btnTitle: "Leer más",
     btnURL: "#",
   },
 ];
 
-const pageTitle: string = `Services | ${SITE.title}`;
+const pageTitle: string = `Servicios | ${SITE.title}`;
 ---
 
+<!-- Layout principal de la página con datos estructurados para SEO -->
 <MainLayout
   title={pageTitle}
   structuredData={{
@@ -102,32 +105,32 @@ const pageTitle: string = `Services | ${SITE.title}`;
     "@type": "WebPage",
     "@id": "https://screwfast.uk/services",
     "url": "https://screwfast.uk/services",
-    "name": "Expert Consultation Services | ScrewFast",
-    "description": "Uniting expertise with your vision, ScrewFast provides exceptional service and comprehensive solutions in the hardware and construction industry, from consultation to project completion.",
+    "name": "Servicios de Consultoría Experta | ScrewFast",
+    "description": "Uniendo experiencia y visión, ScrewFast ofrece un servicio excepcional y soluciones completas en ferretería y construcción.",
     "isPartOf": {
         "@type": "WebSite",
         "url": "https://screwfast.uk",
         "name": "ScrewFast",
-        "description": "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs."
+        "description": "ScrewFast ofrece herramientas de hardware de alta calidad y servicios expertos para todas tus necesidades de proyecto."
     },
-    "inLanguage": "en-US"
+    "inLanguage": "es-ES"
   }}
 >
-  <!--MainSection is the introductory section of the page, it also contains a CTA button-->
+  <!-- Sección introductoria con botón CTA -->
   <MainSection
-    title="Uniting Expertise with Your Vision"
-    subTitle="At ScrewFast, we take pride in providing comprehensive solutions and exceptional service in the hardware and construction industry. Our experienced team is dedicated to supporting your project from inception to completion with a range of specialized services."
+    title="Uniendo experiencia con tu visión"
+    subTitle="En ScrewFast brindamos soluciones integrales y un servicio excepcional en ferretería y construcción. Nuestro equipo experto apoya tu proyecto desde el inicio hasta el fin."
     btnExists={true}
-    btnTitle="Schedule a Consultation"
+    btnTitle="Programa una consulta"
     btnURL="#"
   />
-  <!-- RightSection and LeftSection contain details about various services along with pertinent imagery.
-  They alternate for variety in design.
-  The 'btnExists' property is used to toggle the display of a button in these sections.
-  When btnExists={true}, a button is displayed.
-  This can be used to link to more detailed information or related resources.
-  RightSection can also conditionally render one or two images based on the 'single' property.
-  If 'single' is true, it displays one image, otherwise it displays two.
+  <!-- RightSection y LeftSection contienen detalles sobre varios servicios junto con imágenes pertinentes.
+  Se alternan para ofrecer variedad en el diseño.
+  La propiedad 'btnExists' se utiliza para alternar la visualización de un botón en estas secciones.
+  Cuando btnExists={true}, se muestra un botón.
+  Esto puede usarse para enlazar a información más detallada o recursos relacionados.
+  RightSection también puede renderizar condicionalmente una o dos imágenes según la propiedad 'single'.
+  Si 'single' es true, muestra una imagen, de lo contrario, muestra dos.
   -->
   {
     articles.map(article => {
@@ -157,25 +160,17 @@ const pageTitle: string = `Services | ${SITE.title}`;
       );
     })
   }
-  <!--FeaturesStats section showcases essential stats valuable to users-->
+  <!-- Sección estadística destacando resultados relevantes -->
   <FeaturesStats
-    title="By the Numbers"
-    subTitle="Our commitment to quality and reliability is evident in every project we undertake. At ScrewFast, we are dedicated to delivering industry-leading services that ensure your construction projects are built to last."
+    title="En cifras"
+    subTitle="Nuestro compromiso con calidad y fiabilidad se evidencia en cada proyecto que realizamos."
     mainStatTitle="96%"
-    mainStatSubTitle="of our clients rate their experience with ScrewFast as exceptional"
+    mainStatSubTitle="de nuestros clientes califican su experiencia con ScrewFast como excepcional"
     stats={[
-      {
-        stat: "99.8%",
-        description: "project completion rate",
-      },
-      {
-        stat: "5,000+",
-        description: "successful installations",
-      },
-      {
-        stat: "85%",
-        description: "client growth year-over-year",
-      },
+      { stat: "99.8%", description: "tasa de proyectos completados" },
+      { stat: "5,000+", description: "instalaciones exitosas" },
+      { stat: "85%", description: "crecimiento anual de clientes" },
     ]}
   />
 </MainLayout>
+
